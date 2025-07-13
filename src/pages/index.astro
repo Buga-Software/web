@@ -1,0 +1,35 @@
+---
+import "../styles/global.css";
+import Aurora from "../Aurora/Aurora.tsx";
+---
+
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="generator" content={Astro.generator} />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Questrial&family=Red+Hat+Display:ital,wght@0,300..900;1,300..900&display=swap"
+      rel="stylesheet"
+    />
+    <title>Buga Software</title>
+  </head>
+  <body class="bg-gray-950">
+    <Aurora
+      client:load
+      colorStops={["#5E00EB", "#758ce0", "#0cb8f7"]}
+      blend={1}
+      amplitude={0.3}
+      speed={1}
+    />
+    <div
+      class="absolute top-0 left-0 w-full h-full flex flex-col items-center justify-center"
+    >
+      <img src="/bugasoftware.svg" alt="Buga Software Logo" class="size-52" />
+      <p class="text-white text-xl">Proximamente</p>
+    </div>
+  </body>
+</html>
