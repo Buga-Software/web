@@ -18,6 +18,13 @@ import Aurora from "../Aurora/Aurora.tsx";
     <title>Buga Software</title>
   </head>
   <body class="bg-gray-950">
+    <div
+      class="absolute inset-0 z-10 pointer-events-none opacity-60 mix-blend-soft-light animate-grain"
+      style={{
+        backgroundImage: "url('/grain.svg')",
+        backgroundSize: "cover",
+      }}
+  />
     <Aurora
       client:load
       colorStops={["#5E00EB", "#758ce0", "#0cb8f7"]}
