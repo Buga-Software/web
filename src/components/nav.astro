@@ -1,0 +1,16 @@
+---
+const items = [
+  { label: 'Servicios', href: '/servicios/', last: false },
+  { label: 'Proyectos', href: '/proyectos/', last: false },
+  { label: 'Clientes', href: '/clientes/', last: false },
+  { label: 'Contacto', href: '/contacto/', last: true },
+]
+---
+<nav class="bg-amber-300 px-40 py-5 border-b border-b-cyan-300 w-full flex justify-between items-center">
+  <img class="aspect-square w-7 bg-purple-500" src="icon.svg" alt="Icono de Buga Software">
+  <div class="space-x-7 bg-orange-600">
+    {items.map(({label, href, last}) => (
+    <a href={href} class=`bg-blue-300 inline-block px-5 py-1 hover:bg-white transition-colors duration-150 ${last == true ? 'border bg-fuchsia-200' : ''}`>{label}</a>
+    ))}
+  </div>
+</nav>
