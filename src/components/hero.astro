@@ -1,23 +1,18 @@
 <main class="flex flex-col text-[var(--whitebg)]">
-  <!-- Hero -->
-  <section class="flex flex-col items-center justify-center px-6 md:px-10 py-32 w-full text-center">
-    <!-- Eyebrow -->
-    <span class="px-4 py-1 mb-6 text-md font-medium rounded-full border-2 bg-green-950 border-green-500">
-      Para negocios y emprendimientos
+  <section class="flex flex-col items-center justify-center px-3 md:px-10 py-16 md:py-32 w-full text-center">
+    <span class="px-4 py-1 mb-9 text-md font-medium rounded-full border bg-white/10 backdrop-blur-xl border-white/30">
+      Para negocios y empresas
     </span>
 
-    <!-- Heading -->
     <h1 class="text-4xl md:text-6xl font-bold max-w-4xl text-[var(--white)]">
       Optimiza procesos y crece con soluciones digitales
     </h1>
 
-    <!-- Subtext -->
     <p class="text-base md:text-lg text-center mt-6 max-w-2xl">
       Nos encargamos de darte las mejores soluciones con <br class="hidden md:block" />
       tecnologías modernas brindándote el mejor soporte
     </p>
 
-    <!-- CTA -->
     <div class="mt-8 flex flex-col gap-4 items-center">
       <a href="#contacto" class="px-6 py-3 text-lg font-semibold rounded-xl bg-[var(--white)] text-[var(--black)] border-2 border-[var(--white)] hover:bg-[var(--white)]/5 hover:text-[var(--white)] transition-all duration-300 ease-in-out shadow-lg hover:shadow-xl">
         Solicita tu propuesta gratis
@@ -26,11 +21,9 @@
     </div>
   </section>
 
-  <!-- Sección 2 -->
-  <section class="flex flex-col lg:flex-row justify-around items-center gap-9 lg:px-10 px-6 py-32 w-full">
-    <!-- Texto -->
+  <section id="section-2" class="flex flex-col lg:flex-row justify-around items-center gap-9 lg:px-10 px-6 py-32 w-full opacity-0 translate-y-10 transition-all duration-1000 ease-out">
     <div class="max-w-xl">
-      <h2 class="text-5xl font-semibold mb-6 leading-tight">
+      <h2 class="text-5xl font-semibold mb-6 text-[var(--white)]">
         Construimos lo<br />que imaginas
       </h2>
       <p class="text-lg">
@@ -39,34 +32,55 @@
       </p>
     </div>
 
-    <!-- Pasos -->
     <div class="flex flex-col gap-6 w-full max-w-md">
-      <!-- Paso 1 -->
-      <div class="flex items-start gap-4 p-6 border-2 border-[var(--darkwhite)] rounded-xl hover:border-[var(--white)] transition-colors">
-        <div class="text-5xl font-bold">1</div>
+      <div class="flex items-start gap-4 p-6 border border-[var(--white)] rounded-xl hover:border-[var(--white)] transition-colors">
+        <div class="text-5xl font-bold text-[var(--white)]">1</div>
         <div>
-          <p class="font-semibold">Elige una idea</p>
+          <p class="font-semibold text-[var(--white)]">Elige una idea</p>
           <p class="text-sm opacity-80">Tú traes la visión, nosotros el enfoque.</p>
         </div>
       </div>
 
-      <!-- Paso 2 -->
-      <div class="flex items-start gap-4 p-6 border-2 border-[var(--darkwhite)] rounded-xl hover:border-[var(--white)] transition-colors">
-        <div class="text-5xl font-bold">2</div>
+      <div class="flex items-start gap-4 p-6 border border-[var(--white)] rounded-xl hover:border-[var(--white)] transition-colors">
+        <div class="text-5xl font-bold text-[var(--white)]">2</div>
         <div>
-          <p class="font-semibold">Creamos tu solución</p>
+          <p class="font-semibold text-[var(--white)]">Creamos tu solución</p>
           <p class="text-sm opacity-80">Diseño y desarrollo hechos a medida.</p>
         </div>
       </div>
 
-      <!-- Paso 3 -->
-      <div class="flex items-start gap-4 p-6 border-2 border-[var(--darkwhite)] rounded-xl hover:border-[var(--white)] transition-colors">
-        <div class="text-5xl font-bold">3</div>
+      <div class="flex items-start gap-4 p-6 border border-[var(--white)] rounded-xl hover:border-[var(--white)] transition-colors">
+        <div class="text-5xl font-bold text-[var(--white)]">3</div>
         <div>
-          <p class="font-semibold">La lanzamos al mundo</p>
+          <p class="font-semibold text-[var(--white)]">La lanzamos al mundo</p>
           <p class="text-sm opacity-80">¡Probamos, optimizamos y publicamos!</p>
         </div>
       </div>
     </div>
   </section>
 </main>
+
+<script lang="ts">
+  document.addEventListener("DOMContentLoaded", () => {
+    const section = document.getElementById("section-2");
+
+    if (!section) return;
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            section.classList.remove("opacity-0", "translate-y-10");
+            section.classList.add("opacity-100", "translate-y-0");
+          } else {
+            section.classList.remove("opacity-100", "translate-y-0");
+            section.classList.add("opacity-0", "translate-y-10");
+          }
+        });
+      },
+      { threshold: 0.2 }
+    );
+
+    observer.observe(section);
+  });
+</script>

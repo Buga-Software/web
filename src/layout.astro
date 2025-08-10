@@ -6,6 +6,7 @@ interface Props {
 const { title } = Astro.props;
 
 import "./styles/global.css";
+import Aurora from "./components/Aurora.tsx";
 ---
 
 <html lang="es">
@@ -20,6 +21,15 @@ import "./styles/global.css";
   </head>
 
   <body class="bg-gray-950">
+    <div class="absolute w-full h-[600px] top-0 left-0 z-[-1]">
+      <Aurora
+        client:load
+        colorStops={["#5E00EB", "#758ce0", "#0cb8f7"]}
+        blend={0.5}
+        amplitude={1.0}
+        speed={0.5}
+      />
+    </div>
     <slot />
   </body>
 </html>

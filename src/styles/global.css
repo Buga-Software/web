@@ -9,3 +9,8 @@
   --black: #1A1A1A;
   --darkwhite: #313131;
 }
+
+*::selection {
+  background-color: var(--white);
+  color: var(--black);
+}

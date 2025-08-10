@@ -7,7 +7,7 @@ const items = [
 ];
 ---
 
-<nav class="px-20 py-5 bg-black border-b border-b-zinc-600 w-full flex justify-between items-center">
+<nav class="px-15 py-5 w-full flex justify-between items-center">
   <img class="aspect-square w-7" src="icon.svg" alt="Icono de Buga Software">
 
   <!-- burger menu -->
@@ -25,8 +25,8 @@ const items = [
         href={href}
         class={`inline-block rounded-md px-5 py-1 transition-colors duration-100 ${
           index + 1 == items.length
-            ? 'border bg-white text-black hover:opacity-80'
-            : 'hover:bg-zinc-800'
+            ? 'bg-white/10 hover:opacity-80'
+            : 'hover:bg-white/10'
         }`}
       >
         {label}
@@ -48,7 +48,7 @@ const items = [
   </div>
 </div>
 
-<script>
+<script lang="ts">
   const button = document.getElementById('burger-btn')
   const nav = document.querySelector('.mobile-nav')
   const body = document.body
