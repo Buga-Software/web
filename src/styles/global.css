@@ -1,5 +1,11 @@
 @import "tailwindcss";
+@import "@fontsource-variable/inter";
 
 :root {
-  font-family: Montserrat, sans-serif;
+  font-family: 'Inter Variable', sans-serif;
+
+  --white: #FFFAFA;
+  --whitebg: #B9B9B9;
+  --black: #1A1A1A;
+  --darkwhite: #313131;
 }
