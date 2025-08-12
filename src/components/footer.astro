@@ -1,10 +1,34 @@
-    <footer class="border-t-2 border-[var(--darkwhite)] py-4 px-40 flex justify-between items-center text-[var(--whitebg)]">
-      <div class="p-2">
-        <p class="text-sm">© 2025. Todos los derechos reservados</p>
-        <p class="text-sm">Desarrollado por Buga Software</p>
-      </div>
+<footer class="border-t-2 border-[var(--darkwhite)] py-4 px-4 md:px-40 flex flex-col md:flex-row justify-between items-center text-[var(--whitebg)] gap-4">
+  <div class="flex flex-col gap-1">
+    <div class="p-2 text-center md:text-left">
+      <p class="text-sm">© 2025. Todos los derechos reservados</p>
+      <p class="text-sm">Desarrollado por <span class="font-semibold">Buga Software</span></p>
+    </div>
+    <div class="flex items-center gap-2 text-sm font-mono px-3 py-1 rounded-lg border border-white/20 backdrop-blur-sm justify-around">
+      <span id="horaColombia">--</span>
+      <span class="flex items-center gap-1 text-green-400">
+        <span class="inline-block w-2 h-2 rounded-full bg-green-400 animate-pulse"></span>
+        Activos
+      </span>
+    </div>
+  </div>
 
-      <div class="p-2">
-        <img src="/favicon.svg" alt="Buga Software Logo" class="size-12" />
-      </div>
-    </footer>
+  <div class="p-2">
+    <img src="/favicon.svg" alt="Buga Software Logo" class="size-12" />
+  </div>
+</footer>
+
+<script lang="ts">
+  function actualizarHora() {
+    const ahora = new Date().toLocaleTimeString("es-CO", {
+      timeZone: "America/Bogota",
+      hour: "2-digit",
+      minute: "2-digit",
+      second: "2-digit"
+    });
+    document.getElementById("horaColombia").textContent = ahora + " 🇨🇴";
+  }
+
+  actualizarHora();
+  setInterval(actualizarHora, 1000);
+</script>
