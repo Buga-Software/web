@@ -1,0 +1,67 @@
+---
+const projects = ['1', '2', '3']
+---
+<section class="flex flex-col lg:flex-row gap-8 text-white">
+  <!-- Izquierda -->
+  <aside class="lg:w-1/2 lg:sticky lg:top-0 lg:h-screen flex flex-col justify-center items-center px-4">
+    <div>
+      <h2 class="text-4xl font-bold mb-4">Lorem ipsum</h2>
+      <p class="max-w-md opacity-80">
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed euismod, nisl eget
+        ultricies ultrices, nisi nisl tincidunt nisi, euismod aliquam nisl nisi euismod.
+      </p>
+    </div>
+  </aside>
+
+  <!-- Derecha -->
+  <div class="lg:w-1/2 projects">
+    {projects.map((name) => (
+      <div class="panel h-[80vh] lg:h-screen flex justify-center items-center">
+        <div class="project w-72 h-52 sm:w-96 sm:h-72 bg-gray-500 rounded-xl flex items-center justify-center text-3xl font-bold">
+          {name}
+        </div>
+      </div>
+    ))}
+  </div>
+
+  <script lang="ts">
+    import Lenis from 'lenis'
+    import gsap from 'gsap'
+    import { ScrollTrigger } from 'gsap/ScrollTrigger'
+    gsap.registerPlugin(ScrollTrigger)
+
+    const lenis = new Lenis({ duration: 1.1 })
+    lenis.on('scroll', ScrollTrigger.update)
+    gsap.ticker.add((t) => lenis.raf(t * 1000))
+    gsap.ticker.lagSmoothing(0)
+
+    function initAnimations() {
+      const cards = gsap.utils.toArray<HTMLElement>('.project')
+
+      gsap.set(cards, { opacity: 0.25, scale: 0.9, transformOrigin: 'center' })
+
+      function activate(card) {
+        gsap.to(cards, { opacity: 0.25, scale: 0.9, duration: 0.25, overwrite: 'auto' })
+        gsap.to(card,  { opacity: 1,    scale: 1.08, duration: 0.3,  overwrite: 'auto' })
+      }
+
+      cards.forEach((card) => {
+        ScrollTrigger.create({
+          trigger: card,
+          start: 'top 55%',
+          end:   'bottom 45%',
+          onEnter:     () => activate(card),
+          onEnterBack: () => activate(card),
+          onLeave:     () => gsap.to(card, { opacity: 0.25, scale: 0.9, duration: 0.2 }),
+          onLeaveBack: () => gsap.to(card, { opacity: 0.25, scale: 0.9, duration: 0.2 }),
+          snap: 0.5,
+        })
+      })
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+      initAnimations()
+      ScrollTrigger.refresh()
+    })
+  </script>
+</section>

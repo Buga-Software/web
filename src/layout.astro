@@ -23,7 +23,7 @@ import Aurora from "./components/Aurora.tsx";
   <body class="bg-gray-950">
     <div class="absolute w-full h-[600px] top-0 left-0 z-[-1]">
       <Aurora
-        client:load
+        client:only="react"
         colorStops={["#3b0a45", "#7b2cbf", "#1e3a8a"]}
         blend={2.5}
         amplitude={1.0}
@@ -33,3 +33,12 @@ import Aurora from "./components/Aurora.tsx";
     <slot />
   </body>
 </html>
+
+<script>
+  // Smooth scrolling
+  import Lenis from "lenis";
+
+  const lenis = new Lenis({
+    autoRaf: true,
+  });
+</script>
