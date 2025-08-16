@@ -1,25 +1,32 @@
 ---
-const projects = ['1', '2', '3']
+import ProjectCard from "./react/projectCard.tsx"
+
+const projects = [
+  // status: 'Desplegado' o 'En desarrollo'
+  { name: 'Rifas Velez', description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed euismod, nisl eget ultricies ultrices, nisi nisl tincidunt nisi, euismod aliquam nisl nisi euismod.', image: '/public/project-velez.webp', status: 'Desplegado', url: 'https://rifasvelez.com/' },
+  { name: 'StockIn', description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed euismod, nisl eget ultricies ultrices, nisi nisl tincidunt nisi, euismod aliquam nisl nisi euismod.', image: '/public/project-stockin.webp', status: 'Desplegado', url: 'http://stockin-demo.vercel.app/' },
+]
 ---
-<section class="flex flex-col lg:flex-row gap-8 text-white">
+
+<section class="flex flex-col lg:flex-row gap-4 lg:gap-24 text-white max-w-7xl mx-auto">
   <!-- Izquierda -->
-  <aside class="lg:w-1/2 lg:sticky lg:top-0 lg:h-screen flex flex-col justify-center items-center px-4">
-    <div>
-      <h2 class="text-4xl font-bold mb-4">Lorem ipsum</h2>
-      <p class="max-w-md opacity-80">
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed euismod, nisl eget
-        ultricies ultrices, nisi nisl tincidunt nisi, euismod aliquam nisl nisi euismod.
+  <aside class="lg:w-1/2 lg:sticky lg:top-0 lg:h-screen flex flex-col justify-center px-6">
+    <div class="max-w-md mx-auto">
+      <h2 class="text-4xl font-bold mb-4 leading-tight">
+        Proyectos pensados para maximizar el valor digital
+      </h2>
+      <p class="opacity-80">
+        Aplicaciones web desarrolladas con tecnologías modernas para potenciar negocios,
+        automatizar procesos y mejorar la experiencia del usuario.
       </p>
     </div>
   </aside>
 
   <!-- Derecha -->
-  <div class="lg:w-1/2 projects">
-    {projects.map((name) => (
+  <div class="lg:w-1/2 flex flex-col gap-8">
+    {projects.map(({ name, description, image, status, url}) => (
       <div class="panel h-[80vh] lg:h-screen flex justify-center items-center">
-        <div class="project w-72 h-52 sm:w-96 sm:h-72 bg-gray-500 rounded-xl flex items-center justify-center text-3xl font-bold">
-          {name}
-        </div>
+      <ProjectCard client:load name={name} description={description} image={image} status={status} url={url} />
       </div>
     ))}
   </div>
@@ -36,16 +43,16 @@ const projects = ['1', '2', '3']
     gsap.ticker.lagSmoothing(0)
 
     function initAnimations() {
-      const cards = gsap.utils.toArray<HTMLElement>('.project')
+      const cards = gsap.utils.toArray<HTMLElement>('.panel')
 
       gsap.set(cards, { opacity: 0.25, scale: 0.9, transformOrigin: 'center' })
 
       function activate(card) {
         gsap.to(cards, { opacity: 0.25, scale: 0.9, duration: 0.25, overwrite: 'auto' })
-        gsap.to(card,  { opacity: 1,    scale: 1.08, duration: 0.3,  overwrite: 'auto' })
+        gsap.to(card,  { opacity: 1,    scale: 1.05, duration: 0.3,  overwrite: 'auto' })
       }
 
-      cards.forEach((card) => {
+      cards.forEach((card, i) => {
         ScrollTrigger.create({
           trigger: card,
           start: 'top 55%',
@@ -56,6 +63,18 @@ const projects = ['1', '2', '3']
           onLeaveBack: () => gsap.to(card, { opacity: 0.25, scale: 0.9, duration: 0.2 }),
           snap: 0.5,
         })
+
+        // Asegurar que la última card quede completa
+        if (i === cards.length - 1) {
+          ScrollTrigger.create({
+            trigger: card,
+            start: 'top 55%',
+            end: 'bottom bottom',
+            onEnter: () => activate(card),
+            onEnterBack: () => activate(card),
+            pin: false,
+          })
+        }
       })
     }
 
