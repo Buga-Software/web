@@ -32,13 +32,13 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ name, description, image, sta
       onMouseMove={handleMouseMove}
       onMouseEnter={() => setOpacity(1)}
       onMouseLeave={() => setOpacity(0)}
-      className="relative w-[600px] overflow-hidden rounded-2xl border border-gray-700 bg-gray-900 shadow-lg project-card"
+      className="relative max-w-[600px] overflow-hidden rounded-2xl border border-gray-700 bg-gray-900 shadow-lg project-card"
     >
       <div className="relative rounded-2xl overflow-hidden">
         <img
           src={image}
           alt={`Imagen del proyecto ${name}`}
-          className="w-full h-[420px] object-cover rounded-2xl"
+          className="w-full max-h-[420px] object-cover rounded-2xl"
           loading="lazy"
         />
 
@@ -57,25 +57,28 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ name, description, image, sta
           {status}
         </div>
 
-        <div className="absolute inset-x-0 bottom-0 z-20 bg-gradient-to-t from-black/80 via-black/50 to-transparent p-5">
-          <span
-            className="text-lg md:text-xl font-semibold text-white drop-shadow-sm"
-            aria-label={`Abrir ${name}`}
-          >
-            {name}
-          </span>
-          <p className="mt-1 text-sm text-gray-200 drop-shadow-sm">{description}</p>
-          <div className="mt-3">
-            <a
-              href={url}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="cursor-pointer inline-block text-sm hover:opacity-60 transition-opacity duration-200 font-medium"
-            >
-              Ver más →
-            </a>
-          </div>
-        </div>
+        <div className="absolute inset-x-0 bottom-0 z-20 bg-gradient-to-t from-black/90 via-black/70 to-transparent p-5 transition-colors duration-300 group-hover:from-black/95 group-hover:via-black/80">
+  <span
+    className="text-lg md:text-xl font-semibold text-white drop-shadow-lg"
+    aria-label={`Abrir ${name}`}
+  >
+    {name}
+  </span>
+  <p className="mt-1 text-sm text-gray-200 drop-shadow-lg line-clamp-3">
+    {description}
+  </p>
+  <div className="mt-3">
+    <a
+      href={url}
+      target="_blank"
+      rel="noopener noreferrer"
+      className="inline-block px-3 py-1 rounded-full bg-white/10 hover:bg-white/20 text-white text-sm font-medium transition"
+    >
+      Ver más →
+    </a>
+  </div>
+</div>
+
       </div>
     </article>
   );
