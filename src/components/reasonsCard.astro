@@ -8,9 +8,9 @@ interface Props {
 const { title, description, icon } = Astro.props;
 ---
 
-<div class="bg-neutral-950 p-8 rounded-lg hover:bg-neutral-900 transition">
+<div class="border border-white/15 p-8 rounded-3xl hover:bg-white/5 transition">
   <div class="mb-4 flex justify-center">
-    <div class="w-14 h-14 flex items-center justify-center rounded-full bg-white/5 backdrop-blur-xl border border-white/15">
+    <div class="w-14 h-14 flex items-center justify-center rounded-full border border-white/20">
       <Fragment set:html={icon} />
     </div>
   </div>

@@ -1,14 +1,16 @@
 ---
 const items = [
-  { label: 'Servicios', href: '/servicios/' },
-  { label: 'Proyectos', href: '/proyectos/' },
-  { label: 'Clientes', href: '/clientes/' },
-  { label: 'Contacto', href: '/contacto/' },
+  { label: 'Servicios', href: '/services' },
+  { label: 'Proyectos', href: '/proyects' },
+  { label: 'Clientes', href: '/clients' },
+  { label: 'Contacto', href: '/contact' },
 ];
 ---
 
 <nav class="px-15 py-5 w-full flex justify-between items-center">
-  <img class="aspect-square w-7" src="icon.svg" alt="Icono de Buga Software">
+  <a href="/">
+    <img class="aspect-square w-7" src="icon.svg" alt="Icono de Buga Software">
+  </a>
 
   <!-- burger menu -->
   <button id="burger-btn" class="md:hidden text-white p-3 hover:cursor-pointer">

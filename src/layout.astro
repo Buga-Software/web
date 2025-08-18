@@ -1,12 +1,13 @@
 ---
 interface Props {
   title: string;
+  aurora?: boolean;
 }
 
-const { title } = Astro.props;
+const { title, aurora = true } = Astro.props;
 
 import "./styles/global.css";
-import Aurora from "./components/Aurora.tsx";
+import Aurora from "./components/react/Aurora.tsx";
 ---
 
 <html lang="es">
@@ -21,15 +22,17 @@ import Aurora from "./components/Aurora.tsx";
   </head>
 
   <body class="bg-black">
-    <div class="absolute w-full h-full top-0 left-0 z-[-1]">
-      <Aurora
-        client:only="react"
-        colorStops={["#3b0a45", "#7b2cbf", "#1e3a8a"]}
-        blend={2.5}
-        amplitude={1.0}
-        speed={0.5}
-      />
+    {aurora && (
+      <div class="absolute w-full h-full top-0 left-0 z-[-1]">
+        <Aurora
+          client:only="react"
+          colorStops={["#3b0a45", "#7b2cbf", "#1e3a8a"]}
+          blend={2.5}
+          amplitude={1.0}
+          speed={0.5}
+        />
     </div>
+    )}
     <slot />
   </body>
 </html>

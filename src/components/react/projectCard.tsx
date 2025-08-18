@@ -1,5 +1,5 @@
-'use client';
-import React, { useRef, useState } from 'react';
+"use client";
+import React, { useRef, useState } from "react";
 
 interface ProjectCardProps {
   name: string;
@@ -9,16 +9,22 @@ interface ProjectCardProps {
   url: string;
 }
 
-const ProjectCard: React.FC<ProjectCardProps> = ({ name, description, image, status, url }) => {
+const ProjectCard: React.FC<ProjectCardProps> = ({
+  name,
+  description,
+  image,
+  status,
+  url,
+}) => {
   const divRef = useRef<HTMLDivElement>(null);
   const [position, setPosition] = useState({ x: 0, y: 0 });
   const [opacity, setOpacity] = useState(0);
 
   const statusColors: Record<string, string> = {
-    Desplegado: 'bg-emerald-600',
-    'En desarrollo': 'bg-purple-500',
+    Desplegado: "bg-green-600",
+    "En desarrollo": "bg-purple-500",
   };
-  const statusClass = statusColors[status] || 'bg-gray-600';
+  const statusClass = statusColors[status] || "bg-gray-600";
 
   const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
     if (!divRef.current) return;
@@ -32,7 +38,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ name, description, image, sta
       onMouseMove={handleMouseMove}
       onMouseEnter={() => setOpacity(1)}
       onMouseLeave={() => setOpacity(0)}
-      className="relative max-w-[600px] overflow-hidden rounded-2xl border border-gray-700 bg-gray-900 shadow-lg project-card"
+      className="relative max-w-[600px] overflow-hidden rounded-3xl bg-gray-900 shadow-lg project-card"
     >
       <div className="relative rounded-2xl overflow-hidden">
         <img
@@ -57,28 +63,27 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ name, description, image, sta
           {status}
         </div>
 
-        <div className="absolute inset-x-0 bottom-0 z-20 bg-gradient-to-t from-black/90 via-black/70 to-transparent p-5 transition-colors duration-300 group-hover:from-black/95 group-hover:via-black/80">
-  <span
-    className="text-lg md:text-xl font-semibold text-white drop-shadow-lg"
-    aria-label={`Abrir ${name}`}
-  >
-    {name}
-  </span>
-  <p className="mt-1 text-sm text-gray-200 drop-shadow-lg line-clamp-3">
-    {description}
-  </p>
-  <div className="mt-3">
-    <a
-      href={url}
-      target="_blank"
-      rel="noopener noreferrer"
-      className="inline-block px-3 py-1 rounded-full bg-white/10 hover:bg-white/20 text-white text-sm font-medium transition"
-    >
-      Ver más →
-    </a>
-  </div>
-</div>
+        <a
+          href={url}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="absolute top-4 right-4 z-20 text-white/80 hover:text-white transition"
+          aria-label={`Abrir ${name}`}
+        >
+          <svg  xmlns="http://www.w3.org/2000/svg"  width="26"  height="26"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"  className="icon icon-tabler icons-tabler-outline icon-tabler-external-link"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M12 6h-6a2 2 0 0 0 -2 2v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-6" /><path d="M11 13l9 -9" /><path d="M15 4h5v5" /></svg>
+        </a>
 
+        <div className="absolute inset-x-0 bottom-0 z-20 bg-gradient-to-t from-black/90 via-black/70 to-transparent p-5 transition-colors duration-300 group-hover:from-black/95 group-hover:via-black/80">
+          <span
+            className="text-lg md:text-xl font-semibold text-white drop-shadow-lg"
+            aria-label={`Abrir ${name}`}
+          >
+            {name}
+          </span>
+          <p className="mt-1 text-sm text-gray-200 drop-shadow-lg line-clamp-3">
+            {description}
+          </p>
+        </div>
       </div>
     </article>
   );
