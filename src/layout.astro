@@ -1,13 +1,13 @@
 ---
 interface Props {
   title: string;
-  aurora?: boolean;
+  silk?: boolean;
 }
 
-const { title, aurora = true } = Astro.props;
+const { title, silk = true } = Astro.props;
 
 import "./styles/global.css";
-import Aurora from "./components/react/Aurora.tsx";
+import Silk from "./components/react/Silk.tsx";
 ---
 
 <html lang="es">
@@ -22,15 +22,17 @@ import Aurora from "./components/react/Aurora.tsx";
   </head>
 
   <body class="bg-black">
-    {aurora && (
-      <div class="absolute w-full h-full top-0 left-0 z-[-1]">
-        <Aurora
-          client:only="react"
-          colorStops={["#3b0a45", "#7b2cbf", "#1e3a8a"]}
-          blend={2.5}
-          amplitude={1.0}
-          speed={0.5}
-        />
+    {silk && (
+    <div class="absolute w-full h-full top-0 left-0 z-[-1]">
+      <Silk 
+        client:only="react"
+        speed={5}
+        scale={0.8}
+        color="#1d2540"
+        noiseIntensity={1.5}
+        rotation={0}
+      />
+      <div class="absolute w-full h-full top-0 left-0" style="background: linear-gradient(to bottom, transparent 80%, #000000 100%);"></div>
     </div>
     )}
     <slot />
