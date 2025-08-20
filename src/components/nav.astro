@@ -7,7 +7,7 @@ const items = [
 ];
 ---
 
-<nav class="px-15 py-5 w-full flex justify-between items-center">
+<nav id="navbar" class="sticky top-0 z-50 px-12 md:px-36 py-5 w-full flex justify-between items-center transition-all duration-300 ease-in-out">
   <a href="/">
     <img class="aspect-square w-7" src="icon.svg" alt="Icono de Buga Software">
   </a>
@@ -25,9 +25,9 @@ const items = [
     {items.map(({ label, href }, index) => (
       <a
         href={href}
-        class={`inline-block rounded-md px-5 py-1 transition-colors duration-100 ${
+        class={`inline-block rounded-md px-5 py-1 transition-colors duration-600 ${
           index + 1 == items.length
-            ? 'bg-white/10 hover:opacity-80'
+            ? 'bg-white/10 hover:opacity-80 transition-opacity duration-300'
             : 'hover:bg-white/10'
         }`}
       >
@@ -39,8 +39,8 @@ const items = [
 
 <!-- mobile -->
 <div class="relative mobile-nav hidden md:hidden">
-  <div class="absolute top-0 left-0 w-full h-screen bg-black opacity-90 z-100 text-zinc-400 flex flex-col justify-between items-center p-10">
-    <ul class="flex flex-col space-y-5 text-2xl text-center font-medium">
+  <div class="fixed top-0 left-0 w-full h-screen bg-black/90 backdrop-blur-md z-40 text-zinc-400 flex flex-col justify-between items-center p-10">
+    <ul class="flex flex-col space-y-5 text-2xl text-center font-medium mt-20">
       {items.map(({ label, href }) => (
         <li class="hover:text-white transition-colors duration-150">
           <a href={href}>{label}</a>
@@ -50,20 +50,81 @@ const items = [
   </div>
 </div>
 
+<style>
+  /* Estado inicial del navbar */
+  #navbar {
+    background: rgba(0, 0, 0, 0);
+    backdrop-filter: blur(0px);
+  }
+  
+  /* Estado cuando está scrolleado */
+  #navbar.scrolled {
+    background: rgba(18, 18, 18, 0.186);
+    backdrop-filter: blur(12px);
+  }
+  
+  /* Soporte para navegadores webkit */
+  #navbar.scrolled {
+    -webkit-backdrop-filter: blur(12px);
+  }
+</style>
+
 <script lang="ts">
   const button = document.getElementById('burger-btn')
   const nav = document.querySelector('.mobile-nav')
   const body = document.body
-  const line = button.querySelectorAll('rect')
+  const line = button?.querySelectorAll('rect')
+  const navbar = document.getElementById('navbar')
 
   button?.addEventListener('click', () => {
     nav?.classList.toggle('hidden')
     body?.classList.toggle('overflow-hidden')
 
-    // animation menu icon
-    line[0].classList.toggle('rotate-45')
-    line[0].classList.toggle('translate-y-[1.8px]')
-    line[1].classList.toggle('-rotate-45')
-    line[1].classList.toggle('-translate-y-[1.8px]')
+    if (line) {
+      line[0].classList.toggle('rotate-45')
+      line[0].classList.toggle('translate-y-[1.8px]')
+      line[1].classList.toggle('-rotate-45')
+      line[1].classList.toggle('-translate-y-[1.8px]')
+    }
+  })
+
+  let lastScrollY = window.scrollY
+  
+  function updateNavbar() {
+    const currentScrollY = window.scrollY
+    
+    if (navbar) {
+      if (currentScrollY > 50) {
+        navbar.classList.add('scrolled')
+      } else {
+        navbar.classList.remove('scrolled')
+      }
+    }
+    
+    lastScrollY = currentScrollY
+  }
+
+  let ticking = false
+  
+  function requestTick() {
+    if (!ticking) {
+      requestAnimationFrame(updateNavbar)
+      ticking = true
+      setTimeout(() => { ticking = false }, 10)
+    }
+  }
+
+  window.addEventListener('scroll', requestTick)
+
+  document.querySelectorAll('.mobile-nav a').forEach(link => {
+    link.addEventListener('click', () => {
+      nav?.classList.add('hidden')
+      body?.classList.remove('overflow-hidden')
+      
+      if (line) {
+        line[0].classList.remove('rotate-45', 'translate-y-[1.8px]')
+        line[1].classList.remove('-rotate-45', '-translate-y-[1.8px]')
+      }
+    })
   })
 </script>
