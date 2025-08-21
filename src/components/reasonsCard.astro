@@ -8,12 +8,18 @@ interface Props {
 const { title, description, icon } = Astro.props;
 ---
 
-<div class="border border-white/15 p-8 rounded-3xl hover:bg-white/5 transition">
-  <div class="mb-4 flex justify-center">
-    <div class="w-14 h-14 flex items-center justify-center rounded-full border border-white/20">
+<div class="card group border border-white/15 p-8 rounded-3xl transition-all duration-500 hover:scale-[1.03] hover:shadow-[0_0_40px_rgba(0,123,255,0.1)] relative overflow-hidden">
+
+  <div class="absolute inset-0 bg-gradient-to-br from-white/5 via-[#007BFF]/10 to-transparent opacity-80 blur-2xl pointer-events-none"></div>
+  
+  <div class="mb-4 flex justify-center relative">
+    <div class="absolute w-16 h-16 bg-[#007BFF]/30 blur-2xl rounded-full transition-all ease-in-out duration-500"></div>
+    <div class="w-14 h-14 flex items-center justify-center rounded-full border border-white/20 bg-white/5 transition-all duration-300 group-hover:border-[#007BFF]/40 group-hover:shadow-[0_0_20px_rgba(0,123,255,0.3)] text-white group-hover:text-[#007BFF]">
       <Fragment set:html={icon} />
     </div>
   </div>
-  <h4 class="font-semibold text-xl mb-2">{title}</h4>
-  <p class="text-[var(--whitebg)] mb-6">{description}</p>
+
+  <h4 class="font-semibold text-xl mb-2 relative z-10">{title}</h4>
+  <p class="text-[var(--whitebg)] mb-6 relative z-10">{description}</p>
 </div>
+
