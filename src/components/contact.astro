@@ -2,9 +2,9 @@
 const formAction = import.meta.env.VITE_FORMSPREE_URL;
 ---
 
-<section class="flex flex-col gap-10 mb-10 lg:mb-40 justify-center items-center w-full px-4">
+<section class="flex flex-col gap-10 mb-10 lg:mb-40 justify-center items-center w-full px-4 mt-32 md:mt-3">
   <div class="text-center space-y-3 max-w-2xl">
-    <h2 class="text-4xl md:text-5xl font-bold leading-tight text-white">
+    <h2 class="text-3xl md:text-4xl font-bold leading-tight text-white">
       No dudes en contactarnos
     </h2>
     <p class="text-gray-300 opacity-90 text-lg md:text-xl">
@@ -17,7 +17,7 @@ const formAction = import.meta.env.VITE_FORMSPREE_URL;
       id="contact-form"
       action={formAction}
       method="POST"
-      class="flex flex-col gap-5 bg-[#0f0f0f]/60 p-6 md:p-8 rounded-2xl shadow-lg border border-white/10 backdrop-blur-md"
+      class="flex flex-col gap-5 p-4 md:p-6"
     >
       <div class="flex flex-col">
         <label class="mb-1 text-sm font-medium text-gray-300">Nombre o Razón Social</label>
