@@ -38,13 +38,13 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
       onMouseMove={handleMouseMove}
       onMouseEnter={() => setOpacity(1)}
       onMouseLeave={() => setOpacity(0)}
-      className="relative max-w-[600px] overflow-hidden rounded-3xl bg-gray-900 shadow-lg project-card"
+      className="relative max-w-[600px] overflow-hidden rounded-xl bg-gray-900 shadow-lg project-card"
     >
-      <div className="relative rounded-2xl overflow-hidden">
+      <div className="relative overflow-hidden">
         <img
           src={image}
           alt={`Imagen del proyecto ${name}`}
-          className="w-full max-h-[420px] object-cover rounded-2xl"
+          className="w-full max-h-[420px] object-cover"
           loading="lazy"
         />
 

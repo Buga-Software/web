@@ -1,5 +1,6 @@
 @import "tailwindcss";
 @import "@fontsource-variable/inter";
+@import "@fontsource-variable/roboto-mono";
 
 :root {
   font-family: 'Inter Variable', sans-serif;
@@ -14,4 +15,8 @@
 *::selection {
   background-color: var(--white);
   color: var(--black);
+}
+
+h1, h2, h3, h4, h5, h6, .monospace {
+  font-family: 'Roboto Mono Variable', monospace;
 }

@@ -7,9 +7,9 @@ const items = [
 ];
 ---
 
-<nav id="navbar" class="sticky top-0 z-50 px-12 md:px-36 py-6 w-full flex justify-between items-center transition-all duration-300 ease-in-out">
+<nav id="navbar" class="sticky top-0 z-50 px-12 md:px-24 py-6 w-full flex justify-between items-center transition-all duration-300 ease-in-out">
   <a href="/">
-    <img class="aspect-square w-7" src="icon.svg" alt="Icono de Buga Software">
+    <img class="aspect-square w-6" src="icon.svg" alt="Icono de Buga Software">
   </a>
 
   <!-- burger menu -->
@@ -21,13 +21,13 @@ const items = [
   </button>
 
   <!-- desktop -->
-  <div class="hidden md:flex space-x-4 text-white">
+  <div class="hidden md:flex space-x-4 text-white font-medium monospace">
     {items.map(({ label, href }, index) => (
       <a
         href={href}
         class={`inline-block rounded-lg px-5 py-1 transition-colors duration-300 ${
           index + 1 == items.length
-            ? 'bg-[var(--primary)]/80 border-2 border-transparent hover:border-[var(--primary)] hover:bg-[var(--primary)]/30 transition-all ease-in-out duration-600'
+            ? 'bg-white text-black border-2 border-transparent hover:opacity-80 transition-opacity duration-100'
             : 'hover:bg-white/15'
         }`}
       >
@@ -38,9 +38,9 @@ const items = [
 </nav>
 
 <!-- mobile -->
-<div class="relative mobile-nav hidden md:hidden">
+<div class="relative mobile-nav hidden md:hidden monospace">
   <div class="fixed top-0 left-0 w-full h-screen bg-black/90 backdrop-blur-md z-40 text-white/60 flex flex-col justify-between items-center p-10">
-    <ul class="flex flex-col space-y-5 text-2xl text-center font-medium mt-20">
+    <ul class="flex flex-col space-y-5 text-xl text-center font-medium mt-20">
       {items.map(({ label, href }) => (
         <li class="hover:text-white transition-colors duration-150">
           <a href={href}>{label}</a>
