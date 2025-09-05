@@ -1,0 +1,62 @@
+---
+const services = [
+  {
+    category: "Desarrollo Web",
+    color: "from-pink-700/40",
+    dot: "bg-pink-500",
+    title: "Crea tu Presencia Online",
+    description: "Desarrollamos sitios web rápidos, seguros y optimizados para tu negocio.",
+  },
+  {
+    category: "Diseño Web",
+    color: "from-purple-700/40",
+    dot: "bg-purple-500",
+    title: "Diseños que Impactan",
+    description: "Creamos interfaces atractivas y funcionales que enamoran a tus clientes.",
+  },
+  {
+    category: "Desarrollo de Apps",
+    color: "from-indigo-700/40",
+    dot: "bg-indigo-500",
+    title: "Aplicaciones Inteligentes",
+    description: "Lleva tu idea al siguiente nivel con apps móviles y web personalizadas.",
+  },
+  {
+    category: "Marketing y Publicidad",
+    color: "from-rose-700/40",
+    dot: "bg-rose-500",
+    title: "Haz Crecer tu Negocio",
+    description: "Campañas efectivas para posicionar tu marca y atraer clientes.",
+  },
+  {
+    category: "Rediseño de Webs",
+    color: "from-emerald-700/40",
+    dot: "bg-emerald-500",
+    title: "Transforma tu Sitio",
+    description: "Renovamos tu web para mejorar su diseño, velocidad y conversión.",
+  },
+  {
+    category: "Soluciones para Negocios",
+    color: "from-orange-700/40",
+    dot: "bg-orange-500",
+    title: "Optimiza Procesos",
+    description: "Implementamos soluciones digitales para que tu negocio crezca.",
+  },
+];
+---
+
+<section id="servicios" class="max-w-7xl mx-auto pt-12 py-16">
+  <h2 class="text-3xl md:text-4xl font-semibold text-[var(--white)] mb-10 text-center">Nuestros Servicios</h2>
+  <div class="grid grid-cols-1 md:grid-cols-3  border border-white/10 bg-[var(--black)]">
+    {services.map(service => (
+      <div class={`relative p-8 via-transparent ${service.color} text-white to-transparent`}>
+        <div class="flex items-center gap-2 mb-4">
+          <span class={`w-3 h-3 rounded-full ${service.dot}`}></span>
+          <span class="px-3 py-1 text-sm rounded-full">{service.category}</span>
+        </div>
+        <h3 class="text-xl font-semibold mb-3">{service.title}</h3>
+        <p class="text-gray-400 text-sm leading-relaxed">{service.description}</p>
+      </div>
+    ))}
+  </div>
+</section>

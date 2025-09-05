@@ -80,7 +80,7 @@ const Squares: React.FC<SquaresProps> = ({
         Math.sqrt(canvas.width ** 2 + canvas.height ** 2) / 2
       );
       gradient.addColorStop(0, 'rgba(0, 0, 0, 0)');
-      gradient.addColorStop(1, '#060010');
+      gradient.addColorStop(1, '#060606');
 
       ctx.fillStyle = gradient;
       ctx.fillRect(0, 0, canvas.width, canvas.height);
@@ -149,7 +149,11 @@ const Squares: React.FC<SquaresProps> = ({
     };
   }, [direction, speed, borderColor, hoverFillColor, squareSize]);
 
-  return <canvas ref={canvasRef} className="w-full h-full border-none block "></canvas>;
+  return (
+  <div className="w-full h-full bg-[var(--black)]">
+    <canvas ref={canvasRef} className="w-full h-full border-none block"></canvas>
+  </div>
+);
 };
 
 export default Squares;
