@@ -1,16 +1,48 @@
 @import "tailwindcss";
-@import "@fontsource-variable/inter";
+@import "@fontsource-variable/funnel-display";
 
 :root {
-  font-family: 'Inter Variable', sans-serif;
-
   --white: #FFFAFA;
   --whitebg: #B9B9B9;
-  --black: #1A1A1A;
+  --black: #0d0d0d;
   --darkwhite: #313131;
+  --primary: #FF74D9;
 }
 
 *::selection {
   background-color: var(--white);
   color: var(--black);
+}
+
+h1, h2, h3 {
+  font-family: 'Funnel Display Variable', sans-serif;
+}
+
+p, a, li, span {
+  font-family: 'Satoshi', sans-serif;
+}
+
+/* Satoshi */
+@font-face {
+  font-family: 'Satoshi';
+  src: url('/fonts/Satoshi-Regular.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Satoshi';
+  src: url('/fonts/Satoshi-Medium.woff2') format('woff2');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Satoshi';
+  src: url('/fonts/Satoshi-Bold.woff2') format('woff2');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
 }

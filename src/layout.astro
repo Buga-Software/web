@@ -4,10 +4,10 @@ interface Props {
   silk?: boolean;
 }
 
-const { title, silk = true } = Astro.props;
+const { title = true } = Astro.props;
 
 import "./styles/global.css";
-import Silk from "./components/react/Silk.tsx";
+import Squares from "./components/Squares.tsx";
 ---
 
 <html lang="es">
@@ -21,20 +21,18 @@ import Silk from "./components/react/Silk.tsx";
     <title>{title}</title>
   </head>
 
-  <body class="bg-black">
-    {silk && (
-    <div class="absolute w-full h-full top-0 left-0 z-[-1]">
-      <Silk 
-        client:only="react"
-        speed={5}
-        scale={0.8}
-        color="#313131"
-        noiseIntensity={1.5}
-        rotation={0}
-      />
-      <div class="absolute w-full h-full top-0 left-0" style="background: linear-gradient(to bottom, transparent 80%, #000000 100%);"></div>
-    </div>
-    )}
+  <body class="bg-[var(--black)]">
+      <div class="absolute w-full h-full top-0 left-0 z-[-1]">
+        <Squares 
+          client:load
+          speed={0.5} 
+          squareSize={40}
+          direction='up'
+          borderColor='#292929'
+          hoverFillColor='#222'
+        />
+      </div>
+      <div class="absolute w-full h-full top-0 left-0" style="background: linear-gradient(to bottom, transparent 80%, #0d0d0d 100%);"></div>
     <slot />
   </body>
 </html>
