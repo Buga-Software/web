@@ -3,15 +3,17 @@ import Layout from '../layout.astro';
 import Nav from '../components/nav.astro';
 import Hero from '../components/hero.astro';
 import ServicesSection from '../components/servicesSection.astro';
+import ServiceInfo from "../components/servicesInfo.tsx"
 import Footer from '../components/footer.astro';
 ---
 
 <Layout title="Buga Software">
   <Nav/>
   <div class="space-y-5">
-    <main class="flex flex-col text-[var(--whitebg)] px-4">
+    <main class="flex flex-col text-[var(--whitebg)] px-4 md:px-0">
       <Hero />
       <ServicesSection />
+      <ServiceInfo client:load />
       <!-- <Reasons />
       <Projects />
       <Contact /> -->
