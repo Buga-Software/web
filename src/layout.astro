@@ -21,14 +21,14 @@ import Squares from "./components/Squares.tsx";
     <title>{title}</title>
   </head>
 
-  <body class="bg-[var(--black)]">
+  <body id="inicio" class="bg-[var(--black)]">
       <div class="absolute w-full h-full top-0 left-0 z-[-1]">
         <Squares 
           client:load
           speed={0.5} 
-          squareSize={40}
+          squareSize={50}
           direction='up'
-          borderColor='#292929'
+          borderColor='#2e2e2e'
           hoverFillColor='#222'
         />
       </div>
