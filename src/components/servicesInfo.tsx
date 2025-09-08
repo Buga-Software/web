@@ -13,7 +13,7 @@ const tabs = [
       "SEO básico incluido",
     ],
     color: "text-pink-500 border-pink-500 bg-pink-950/70",
-    image: "web-design.png"
+    image: "web-dev.png"
   },
   {
     id: "design",
@@ -27,6 +27,7 @@ const tabs = [
       "Compatible con todos los dispositivos",
     ],
     color: "text-purple-500 border-purple-500 bg-purple-950/70",
+    image: "web-design.png"
   },
   {
     id: "apps",
@@ -40,6 +41,7 @@ const tabs = [
       "Escalables y seguras",
     ],
     color: "text-blue-500 border-blue-500 bg-blue-950/70",
+    image: "mobile-dev.png"
   },
   {
     id: "marketing",
@@ -53,6 +55,7 @@ const tabs = [
       "Estrategias en redes sociales",
     ],
     color: "text-red-500 border-red-500 bg-red-950/70",
+    image: "marketing.png"
   },
   {
     id: "redesign",
@@ -66,6 +69,7 @@ const tabs = [
       "Aumento de conversiones",
     ],
     color: "text-green-500 border-green-500 bg-green-950/70",
+    image: "redesign.png"
   },
   {
     id: "business",
@@ -79,6 +83,7 @@ const tabs = [
       "Escalabilidad para tu empresa",
     ],
     color: "text-orange-500 border-orange-500 bg-orange-950/70",
+    image: "solutions.png"
   },
 ];
 
@@ -106,7 +111,7 @@ export default function ServicesTabs() {
             <button
               key={tab.id}
               onClick={() => setActive(tab.id)}
-              className={`p-2 text-xs md:text-sm border font-medium text-center transition-all duration-200
+              className={`p-2 text-xs md:text-sm border font-medium text-center transition-all duration-200 cursor-pointer
                 ${
                   active === tab.id
                     ? `${tab.color}`
