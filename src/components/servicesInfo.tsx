@@ -13,6 +13,7 @@ const tabs = [
       "SEO básico incluido",
     ],
     color: "text-pink-500 border-pink-500 bg-pink-950/70",
+    image: "web-design.png"
   },
   {
     id: "design",
@@ -86,17 +87,29 @@ export default function ServicesTabs() {
 
   return (
     <div className="w-full border-y border-zinc-800 box-border relative overflow-hidden">
-      <div className="max-w-7xl mx-auto py-16 space-y-16 px-4 sm:px-6 lg:px-8">
+      { /* Patterns */ }
+      <div
+        className="absolute inset-0 z-[-10] opacity-70"
+        style={{
+          backgroundImage: `
+            linear-gradient(to right, #262626 1px, transparent 1px),
+            linear-gradient(to bottom, #262626 1px, transparent 1px)
+          `,
+          backgroundSize: "20px 20px",
+        }}
+      />
+      <div className="max-w-7xl bg-black mx-auto border-x border-zinc-800 py-8 md:py-12 space-y-14 px-4 sm:px-6 lg:px-20">
+        
         {/* Tabs */}
-        <div className="flex flex-wrap justify-center md:justify-between gap-3">
+        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3">
           {tabs.map((tab) => (
             <button
               key={tab.id}
               onClick={() => setActive(tab.id)}
-              className={`px-5 py-2 text-sm border font-medium transition-all duration-200 
+              className={`p-2 text-xs md:text-sm border font-medium text-center transition-all duration-200
                 ${
                   active === tab.id
-                    ? `${tab.color} shadow-md scale-105`
+                    ? `${tab.color}`
                     : "text-gray-300 border-zinc-800 hover:text-white hover:border-gray-600"
                 }`}
             >
@@ -111,7 +124,7 @@ export default function ServicesTabs() {
             active === tab.id && (
               <div
                 key={tab.id}
-                className="flex flex-col md:flex-row justify-between gap-10 shadow-lg transition-opacity duration-500 "
+                className="flex flex-col md:flex-row justify-between gap-10 transition-opacity duration-500"
               >
                 {/* Texto */}
                 <div className="flex-1 space-y-5 text-center md:text-left">
@@ -120,7 +133,10 @@ export default function ServicesTabs() {
 
                   <ul className="space-y-3">
                     {tab.benefits.map((benefit, i) => (
-                      <li key={i} className="flex items-center justify-center md:justify-start text-gray-300">
+                      <li
+                        key={i}
+                        className="flex items-center justify-center md:justify-start text-gray-300"
+                      >
                         <span className="mr-2 text-green-400">✔</span> {benefit}
                       </li>
                     ))}
@@ -128,15 +144,10 @@ export default function ServicesTabs() {
 
                   <p className="text-lg font-semibold">{tab.price}</p>
                 </div>
-
-                {/* Imagen */}
-                <div className="flex-1 flex justify-center md:justify-end w-full">
-                  {/* <img
-                    src={tab.image}
-                    alt={tab.title}
-                    className="shadow-lg w-full max-w-sm h-auto object-contain "
-                  /> */}
-                  <div className="w-full max-w-xs h-[220px] sm:h-[260px] md:h-[280px] bg-zinc-900 border border-zinc-700 " />
+                <div className="flex-shrink-0 w-full md:w-1/3">
+                  {tab.image && (
+                    <img src={tab.image} alt={tab.title} className="w-full h-auto" />
+                  )}
                 </div>
               </div>
             )
