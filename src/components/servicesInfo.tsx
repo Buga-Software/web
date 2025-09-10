@@ -7,8 +7,7 @@ const tabs = [
     heading: "Construye tu presencia online",
     description:
       "Creamos sitios rápidos, seguros y optimizados para atraer más clientes.",
-    price: "Desde $299.000 COP",
-    oldPrice: "Antes $450.000 COP",
+    price: "$299.000 COP",
     benefits: [
       "Sitios rápidos y optimizados",
       "Diseño moderno y responsivo",
@@ -23,8 +22,7 @@ const tabs = [
     heading: "Diseños que Impactan",
     description:
       "Creamos interfaces atractivas y funcionales que enamoran a tus clientes.",
-    price: "Desde $249.000 COP",
-    oldPrice: "Antes $400.000 COP",
+    price: "$249.000 COP",
     benefits: [
       "Diseños modernos y profesionales",
       "UI/UX centrado en el usuario",
@@ -39,8 +37,7 @@ const tabs = [
     heading: "Aplicaciones Inteligentes",
     description:
       "Lleva tu idea al siguiente nivel con apps móviles y web personalizadas.",
-    price: "Desde $199.000 COP",
-    oldPrice: "Antes $350.000 COP",
+    price: "$199.000 COP",
     benefits: [
       "Apps nativas o híbridas",
       "Integración con APIs",
@@ -55,8 +52,7 @@ const tabs = [
     heading: "Haz crecer tu negocio",
     description:
       "Campañas efectivas para posicionar tu marca y atraer más clientes.",
-    price: "Desde $99.000 COP",
-    oldPrice: "Antes $220.000 COP",
+    price: "$99.000 COP",
     benefits: [
       "SEO avanzado",
       "Campañas en Google Ads",
@@ -72,7 +68,6 @@ const tabs = [
     description:
       "Renovamos tu web para mejorar su diseño, velocidad y conversión.",
     price: "Desde $179.000 COP",
-    oldPrice: "Antes $300.000 COP",
     benefits: [
       "Optimización de velocidad",
       "Mejora en la experiencia del usuario",
@@ -88,7 +83,6 @@ const tabs = [
     description:
       "Implementamos soluciones digitales para que tu negocio crezca.",
     price: "Desde $399.000 COP",
-    oldPrice: "Antes $500.000 COP",
     benefits: [
       "Automatización de procesos",
       "Integración de sistemas",
@@ -122,7 +116,7 @@ export default function ServicesTabs() {
             <button
               key={tab.id}
               onClick={() => setActive(tab.id)}
-              className={`p-2 text-xs border font-medium text-center transition-all duration-200 cursor-pointer
+              className={`p-2 text-sm border font-medium text-center transition-all duration-200 cursor-pointer
                 ${
                   active === tab.id
                     ? `${tab.color}`
@@ -147,7 +141,7 @@ export default function ServicesTabs() {
                   <h3 className="text-2xl text-white md:text-3xl font-bold">
                     {tab.heading}
                   </h3>
-                  <p className="text-gray-400 text-lg font-semibold">
+                  <p className="text-gray-300 text-lg font-semibold">
                     {tab.description}
                   </p>
 
@@ -176,11 +170,8 @@ export default function ServicesTabs() {
                       </li>
                     ))}
                   </ul>
-                  <div className="flex flex-col space-y-2 pt-5">
-                    <del className="font-bold text-gray-500">
-                      {tab.oldPrice}
-                    </del>
-                    <p className="text-gray-200 font-semibold">{tab.price}</p>
+                  <div className="flex flex-col space-y-2">
+                    <p className="text-white font-semibold text-xl">Desde {tab.price}</p>
                   </div>
                 </div>
 

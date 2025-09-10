@@ -22,10 +22,10 @@ const items = [
 
     <!-- Desktop Menu -->
     <div class="hidden md:flex space-x-4 text-white">
-      {items.map(({ label, href }, index) => (
+      {items.map(({ label, href }) => (
         <a
           href={href}
-          class={`inline-block rounded-lg px-5 py-1 relative`}
+          class="inline-block rounded-lg px-5 py-1 relative"
         >
           {label}
         </a>
@@ -48,36 +48,54 @@ const items = [
 </div>
 
 <style>
-  /* Initial state navbar */
+  /* Navbar states */
   #navbar {
     background: rgba(0, 0, 0, 0);
     backdrop-filter: blur(0px);
   }
   
-  /* State when scrolling */
   #navbar.scrolled {
     background: rgba(18, 18, 18, 0.186);
     backdrop-filter: blur(12px);
-  }
-  
-  #navbar.scrolled {
     -webkit-backdrop-filter: blur(12px);
   }
 
-  /* active indicator */
-  .active-link {
-    position: relative;
+  /* Active link indicator (desktop only) */
+  @media (min-width: 768px) {
+    .active-link {
+      position: relative;
+      color: white !important;
+    }
+    .active-link::before {
+      content: '';
+      position: absolute;
+      left: 8px;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 4px;
+      height: 50%;
+      background: white;
+      transition: all 0.25s ease;
+    }
   }
 
-  .active-link::before {
-    content: '';
-    position: absolute;
-    left: 8px;
-    top: 50%;
-    transform: translateY(-50%);
-    width: 4px;
-    height: 50%;
-    background: white;
+  /* Active link mobile: simple underline */
+  @media (max-width: 767px) {
+    .active-link {
+      position: relative;
+      color: white !important;
+    }
+    .active-link::after {
+      content: '';
+      position: absolute;
+      left: 50%;
+      bottom: -6px;
+      transform: translateX(-50%);
+      width: 40%;
+      height: 2px;
+      background: white;
+      border-radius: 2px;
+    }
   }
 </style>
 
@@ -89,30 +107,57 @@ const items = [
   const navbar = document.getElementById('navbar');
 
   button?.addEventListener('click', () => {
-    nav.classList.toggle('hidden');
+    nav?.classList.toggle('hidden');
     body.classList.toggle('overflow-hidden');
-    lines.forEach((line, i) =>
+    lines?.forEach((line, i) =>
       line.classList.toggle(i === 0 ? 'rotate-45 translate-y-[1.8px]' : '-rotate-45 -translate-y-[1.8px]')
     );
   });
 
   window.addEventListener('scroll', () => {
-    navbar.classList.toggle('scrolled', window.scrollY > 50);
+    navbar?.classList.toggle('scrolled', window.scrollY > 50);
   });
 
   const closeMenu = () => {
-    nav.classList.add('hidden');
+    nav?.classList.add('hidden');
     body.classList.remove('overflow-hidden');
-    lines.forEach(line => line.classList.remove('rotate-45', 'translate-y-[1.8px]', '-rotate-45', '-translate-y-[1.8px]'));
+    lines?.forEach(line => line.classList.remove('rotate-45', 'translate-y-[1.8px]', '-rotate-45', '-translate-y-[1.8px]'));
   };
 
-  const allLinks = document.querySelectorAll('.md\\:flex a, .mobile-nav a');
-  allLinks.forEach(link => {
-    link.addEventListener('click', e => {
-      allLinks.forEach(l => l.classList.remove('active-link'));
-      e.currentTarget.classList.add('active-link');
+  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function (e) {
+      e.preventDefault();
+      const anchorElem = this;
+      const targetId = anchorElem.getAttribute('href')?.substring(1);
+      const targetElement = document.getElementById(targetId);
+      if (targetElement) {
+        targetElement.scrollIntoView({ behavior: 'smooth' });
+      }
       if (nav && !nav.classList.contains('hidden')) closeMenu();
     });
   });
-</script>
 
+  document.addEventListener("DOMContentLoaded", () => {
+    const sections = document.querySelectorAll("section[id]");
+    const navLinks = document.querySelectorAll("nav a[href^='#']");
+    const observerOptions = { threshold: 0.6 };
+
+    const observerCallback = (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          const id = entry.target.getAttribute("id");
+
+          navLinks.forEach((link) => link.classList.remove("active-link"));
+
+          if (id && id !== "hero") {
+            const activeLink = document.querySelector(`nav a[href="#${id}"]`);
+            activeLink?.classList.add("active-link");
+          }
+        }
+      });
+    };
+
+    const observer = new IntersectionObserver(observerCallback, observerOptions);
+    sections.forEach((section) => observer.observe(section));
+  });
+</script>
