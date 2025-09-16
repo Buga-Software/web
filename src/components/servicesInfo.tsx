@@ -3,48 +3,18 @@ import { useState } from "react";
 const tabs = [
   {
     id: "web",
-    title: "Desarrollo Web",
+    title: "Desarrollo & Diseño Web",
     heading: "Construye tu presencia online",
     description:
-      "Creamos sitios rápidos, seguros y optimizados para atraer más clientes.",
-    price: "$299.000 COP",
+      "Creamos sitios rápidos, modernos y optimizados para atraer más clientes.",
+    price: "$300.000 COP",
     benefits: [
       "Sitios rápidos y optimizados",
       "Diseño moderno y responsivo",
       "SEO básico incluido",
     ],
-    color: "text-pink-500 border-pink-500 bg-pink-950/70",
+    color: "text-green-500 border-green-500 bg-green-950/70",
     image: "web-dev.png",
-  },
-  {
-    id: "design",
-    title: "Diseño Web",
-    heading: "Diseños que Impactan",
-    description:
-      "Creamos interfaces atractivas y funcionales que enamoran a tus clientes.",
-    price: "$249.000 COP",
-    benefits: [
-      "Diseños modernos y profesionales",
-      "UI/UX centrado en el usuario",
-      "Compatible con todos los dispositivos",
-    ],
-    color: "text-purple-500 border-purple-500 bg-purple-950/70",
-    image: "web-design.png",
-  },
-  {
-    id: "apps",
-    title: "Desarrollo de Apps",
-    heading: "Aplicaciones Inteligentes",
-    description:
-      "Lleva tu idea al siguiente nivel con apps móviles y web personalizadas.",
-    price: "$199.000 COP",
-    benefits: [
-      "Apps nativas o híbridas",
-      "Integración con APIs",
-      "Escalables y seguras",
-    ],
-    color: "text-blue-500 border-blue-500 bg-blue-950/70",
-    image: "mobile-dev.png",
   },
   {
     id: "marketing",
@@ -52,29 +22,14 @@ const tabs = [
     heading: "Haz crecer tu negocio",
     description:
       "Campañas efectivas para posicionar tu marca y atraer más clientes.",
-    price: "$99.000 COP",
+    price: "$100.000 COP",
     benefits: [
       "SEO avanzado",
       "Campañas en Google Ads",
       "Estrategias en redes sociales",
     ],
-    color: "text-red-500 border-red-500 bg-red-950/70",
+    color: "text-blue-500 border-blue-500 bg-blue-950/70",
     image: "marketing.png",
-  },
-  {
-    id: "redesign",
-    title: "Rediseño de Webs",
-    heading: "Transforma tu sitio",
-    description:
-      "Renovamos tu web para mejorar su diseño, velocidad y conversión.",
-    price: "Desde $179.000 COP",
-    benefits: [
-      "Optimización de velocidad",
-      "Mejora en la experiencia del usuario",
-      "Aumento de conversiones",
-    ],
-    color: "text-green-500 border-green-500 bg-green-950/70",
-    image: "redesign.png",
   },
   {
     id: "business",
@@ -82,7 +37,7 @@ const tabs = [
     heading: "Optimiza procesos",
     description:
       "Implementamos soluciones digitales para que tu negocio crezca.",
-    price: "Desde $399.000 COP",
+    price: "$250.000 COP",
     benefits: [
       "Automatización de procesos",
       "Integración de sistemas",
@@ -111,7 +66,7 @@ export default function ServicesTabs() {
       />
       <div className="max-w-7xl bg-black mx-auto border-x border-zinc-800 py-8 md:py-12 space-y-8 px-4 sm:px-6 lg:px-20">
         {/* Tabs */}
-        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3">
+        <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
           {tabs.map((tab) => (
             <button
               key={tab.id}
@@ -161,17 +116,19 @@ export default function ServicesTabs() {
                             <path
                               d="M11.4669 3.72684C11.7558 3.91574 11.8369 4.30308 11.648 4.59198L7.39799 11.092C7.29783 11.2452 7.13556 11.3467 6.95402 11.3699C6.77247 11.3931 6.58989 11.3355 6.45446 11.2124L3.70446 8.71241C3.44905 8.48022 3.43023 8.08494 3.66242 7.82953C3.89461 7.57412 4.28989 7.55529 4.5453 7.78749L6.75292 9.79441L10.6018 3.90792C10.7907 3.61902 11.178 3.53795 11.4669 3.72684Z"
                               fill="currentColor"
-                              fill-rule="evenodd"
-                              clip-rule="evenodd"
+                              fillRule="evenodd"
+                              clipRule="evenodd"
                             ></path>
                           </svg>
-                        </span>{" "}
+                        </span>
                         {benefit}
                       </li>
                     ))}
                   </ul>
                   <div className="flex flex-col space-y-2">
-                    <p className="text-white font-semibold text-xl">Desde {tab.price}</p>
+                    <p className="text-white font-semibold text-xl">
+                      Desde {tab.price}
+                    </p>
                   </div>
                 </div>
 
@@ -186,7 +143,7 @@ export default function ServicesTabs() {
                   )}
                 </div>
               </div>
-            ),
+            )
         )}
       </div>
     </div>

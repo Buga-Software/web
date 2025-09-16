@@ -3,8 +3,9 @@ import Layout from '../layout.astro';
 import Nav from '../components/nav.astro';
 import Hero from '../components/hero.astro';
 import ServicesSection from '../components/servicesSection.astro';
-import ServiceInfo from "../components/servicesInfo.tsx"
-import Contact from "../components/contact.astro"
+import ServiceInfo from "../components/servicesInfo.tsx";
+import Clients from '../components/clients.astro';
+import Contact from "../components/contact.astro";
 import Footer from '../components/footer.astro';
 ---
 
@@ -15,10 +16,8 @@ import Footer from '../components/footer.astro';
       <Hero />
       <ServicesSection />
       <ServiceInfo client:load />
+      <Clients />
       <Contact />
-      <!-- <Reasons />
-      <Projects />
-      <Contact /> -->
     </main>
     <div>
     <Footer />
