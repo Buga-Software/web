@@ -24,6 +24,10 @@ p, a, li, span {
   font-family: 'Satoshi', sans-serif;
 }
 
+#horaColombia {
+  font-family: monospace;
+}
+
 /* Satoshi */
 @font-face {
   font-family: 'Satoshi';
