@@ -21,22 +21,30 @@ import Squares from "./components/Squares.tsx";
     <title>{title}</title>
   </head>
 
-  <body id="inicio" class="bg-[var(--black)]">
-      <div class="absolute w-full h-full top-0 left-0 z-[-1]">
-        <Squares 
-          client:load
-          speed={0.5} 
-          squareSize={50}
-          direction='up'
-          borderColor='#2e2e2e'
-          hoverFillColor='#222'
-        />
-      </div>
+  <body id="inicio" class="bg-[var(--bg-primary)] text-[var(--text-primary)] transition-colors duration-300">
+      <!-- <div class="absolute w-full h-full top-0 left-0 z-[-1]"> -->
+      <!--   <Squares  -->
+      <!--     client:load -->
+      <!--     speed={0.5}  -->
+      <!--     squareSize={50} -->
+      <!--     direction='up' -->
+      <!--     borderColor='#2e2e2e' -->
+      <!--     hoverFillColor='#222' -->
+      <!--   /> -->
+      <!-- </div> -->
     <slot />
   </body>
 </html>
 
 <script>
+  // Theme initialization
+  const initTheme = () => {
+    const savedTheme = localStorage.getItem('theme') || 'dark';
+    document.documentElement.setAttribute('data-theme', savedTheme);
+  };
+
+  // Initialize theme immediately
+  initTheme();
   // Smooth scrolling
   import Lenis from "lenis";
 

@@ -150,7 +150,7 @@ const Squares: React.FC<SquaresProps> = ({
   }, [direction, speed, borderColor, hoverFillColor, squareSize]);
 
   return (
-  <div className="w-full h-full bg-[var(--black)]">
+  <div className="w-full h-full bg-[var(--bg-primary)]">
     <canvas ref={canvasRef} className="w-full h-full border-none block"></canvas>
   </div>
 );
