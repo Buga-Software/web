@@ -64,7 +64,7 @@ export default function ServicesTabs() {
           backgroundSize: "20px 20px",
         }}
       />
-      <div className="max-w-7xl bg-[var(--bg-primary)] mx-auto border-x border-zinc-800 py-8 md:py-12 space-y-8 px-4 sm:px-6 lg:px-20">
+      <div className="max-w-7xl bg-black mx-auto border-x border-zinc-800 py-8 md:py-12 space-y-8 px-4 sm:px-6 lg:px-20">
         {/* Tabs */}
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
           {tabs.map((tab) => (
@@ -75,7 +75,7 @@ export default function ServicesTabs() {
                 ${
                   active === tab.id
                     ? `${tab.color}`
-                    : "text-[var(--text-primary)] opacity-80 border-zinc-800 hover:opacity-100 hover:border-gray-600"
+                    : "text-gray-300 border-zinc-800 hover:text-white hover:border-gray-600"
                 }`}
             >
               {tab.title}
@@ -93,10 +93,10 @@ export default function ServicesTabs() {
               >
                 {/* Texto */}
                 <div className="flex-1 space-y-5 text-center md:text-left">
-                  <h3 className="text-2xl text-[var(--text-primary)] md:text-3xl font-bold">
+                  <h3 className="text-2xl text-white md:text-3xl font-bold">
                     {tab.heading}
                   </h3>
-                  <p className="text-[var(--text-secondary)] text-lg font-semibold">
+                  <p className="text-gray-300 text-lg font-semibold">
                     {tab.description}
                   </p>
 
@@ -104,7 +104,7 @@ export default function ServicesTabs() {
                     {tab.benefits.map((benefit, i) => (
                       <li
                         key={i}
-                        className="flex items-center justify-center md:justify-start text-[var(--text-secondary)]"
+                        className="flex items-center justify-center md:justify-start text-gray-300"
                       >
                         <span className="mr-2 text-green-400">
                           <svg
@@ -126,7 +126,7 @@ export default function ServicesTabs() {
                     ))}
                   </ul>
                   <div className="flex flex-col space-y-2">
-                    <p className="text-[var(--text-primary)] font-semibold text-xl">
+                    <p className="text-white font-semibold text-xl">
                       Desde {tab.price}
                     </p>
                   </div>

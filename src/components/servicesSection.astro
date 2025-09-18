@@ -29,26 +29,26 @@ const services = [
 
 <section id="servicios" class="max-w-7xl mx-auto pt-12 py-14">
     <h2
-        class="text-3xl md:text-4xl font-semibold text-[var(--text-primary)] mb-10 text-center"
+        class="text-3xl md:text-4xl font-semibold text-[var(--white)] mb-10 text-center"
     >
         Nuestros servicios
     </h2>
     <div
-        class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 border border-white/20 bg-[var(--bg-primary)]"
+        class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 border border-white/20 bg-[var(--black)]"
     >
         {
             services.map((service) => (
                 <div
-                    class={`relative p-8 via-transparent ${service.color} text-[var(--text-primary)] to-transparent`}
+                    class={`relative p-8 via-transparent ${service.color} text-white to-transparent`}
                 >
                     <div class="inline-flex items-center gap-2.5 mb-4">
                         <span class={`size-2.5 rounded-full ${service.dot}`} />
-                        <span class="text-sm rounded-full text-[var(--text-secondary)]">
+                        <span class="text-sm rounded-full text-zinc-300">
                             {service.category}
                         </span>
                     </div>
                     <h3 class="text-xl font-semibold mb-2">{service.title}</h3>
-                    <p class="text-[var(--text-secondary)] text-sm font-semibold leading-relaxed">
+                    <p class="text-gray-400 text-sm font-semibold leading-relaxed">
                         {service.description}
                     </p>
                 </div>

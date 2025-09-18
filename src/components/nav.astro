@@ -4,8 +4,6 @@ const items = [
   { label: 'Clientes', href: '#clientes' },
   { label: 'Contacto', href: '#contacto' },
 ];
-
-import ModeButton from "../components/modeButton.astro";
 ---
 
 <nav id="navbar" class="sticky top-0 z-50 w-full transition-all duration-300 ease-in-out">
@@ -13,9 +11,6 @@ import ModeButton from "../components/modeButton.astro";
     <a href="#inicio" class="flex flex-row items-center space-x-6 text-white text-sm flex-shrink-0">
       <img class="aspect-square w-7" src="icon.svg" alt="Icono de Buga Software">
     </a>
-    <div class="md:hidden">
-      <ModeButton idButton="theme-toggle" idSun="sun-icon" idMoon="moon-icon" />
-    </div>
 
     <!-- Burger Menu -->
     <button id="burger-btn" class="md:hidden text-white p-3 hover:cursor-pointer">
@@ -35,14 +30,13 @@ import ModeButton from "../components/modeButton.astro";
           {label}
         </a>
       ))}
-      <ModeButton idButton="theme-toggle-desktop" idSun="sun-icon-desktop" idMoon="moon-icon-desktop" />
     </div>
   </div>
 </nav>
 
 <!-- Mobile Menu -->
 <div class="relative mobile-nav hidden md:hidden">
-  <div class="fixed top-0 left-0 w-full h-screen bg-[var(--bg-primary)]/90 backdrop-blur-md z-40 text-white/60 flex flex-col justify-between items-center p-10">
+  <div class="fixed top-0 left-0 w-full h-screen bg-black/90 backdrop-blur-md z-40 text-white/60 flex flex-col justify-between items-center p-10">
     <ul class="flex flex-col space-y-5 text-2xl text-center font-medium mt-20">
       {items.map(({ label, href }) => (
         <li>
@@ -70,7 +64,7 @@ import ModeButton from "../components/modeButton.astro";
   @media (min-width: 768px) {
     .active-link {
       position: relative;
-      color: var(--text-primary) !important;
+      color: white !important;
     }
     .active-link::before {
       content: '';
@@ -80,7 +74,7 @@ import ModeButton from "../components/modeButton.astro";
       transform: translateY(-50%);
       width: 4px;
       height: 50%;
-      background: var(--text-primary);
+      background: white;
       transition: all 0.25s ease;
     }
   }
@@ -166,80 +160,4 @@ import ModeButton from "../components/modeButton.astro";
     const observer = new IntersectionObserver(observerCallback, observerOptions);
     sections.forEach((section) => observer.observe(section));
   });
-
-
-  // Change theme
-  const themeToggle = document.getElementById('theme-toggle');
-  const themeToggleDesktop = document.getElementById('theme-toggle-desktop');
-  const sunIcon = document.getElementById('sun-icon');
-  const moonIcon = document.getElementById('moon-icon');
-  const sunIconDesktop = document.getElementById('sun-icon-desktop');
-  const moonIconDesktop = document.getElementById('moon-icon-desktop');
-  const root = document.documentElement;
-
-  // Get saved theme from localStorage or default to dark
-  const getSavedTheme = () => {
-    return localStorage.getItem('theme') || 'dark';
-  };
-
-  // Apply theme to document
-  const applyTheme = (theme) => {
-    root.setAttribute('data-theme', theme);
-
-    if (theme === 'light') {
-      sunIcon?.classList.add('opacity-0', 'pointer-events-none');
-      moonIcon?.classList.remove('opacity-0', 'pointer-events-none');
-
-      sunIconDesktop?.classList.add('opacity-0', 'pointer-events-none');
-      moonIconDesktop?.classList.remove('opacity-0', 'pointer-events-none');
-    } else {
-      sunIcon?.classList.remove('opacity-0', 'pointer-events-none');
-      moonIcon?.classList.add('opacity-0', 'pointer-events-none');
-
-      sunIconDesktop?.classList.remove('opacity-0', 'pointer-events-none');
-      moonIconDesktop?.classList.add('opacity-0', 'pointer-events-none');
-    }
-
-    // Update ARIA labels
-    const ariaLabel = theme === 'light' ? 'Switch to dark theme' : 'Switch to light theme';
-    themeToggle?.setAttribute('aria-label', ariaLabel);
-    themeToggleDesktop?.setAttribute('aria-label', ariaLabel);
-  };
-
-  // Toggle theme
-  const toggleTheme = () => {
-    const currentTheme = getSavedTheme();
-    const newTheme = currentTheme === 'light' ? 'dark' : 'light';
-    localStorage.setItem('theme', newTheme);
-    applyTheme(newTheme);
-  };
-
-  // Initialize theme on page load
-  const initTheme = () => {
-    const savedTheme = getSavedTheme();
-    applyTheme(savedTheme);
-  };
-
-  // Event listeners for theme toggles
-  themeToggle?.addEventListener('click', toggleTheme);
-  themeToggleDesktop?.addEventListener('click', toggleTheme);
-
-  // Keyboard navigation
-  themeToggle?.addEventListener('keydown', (e) => {
-    if (e.key === 'Enter' || e.key === ' ') {
-      e.preventDefault();
-      toggleTheme();
-    }
-  });
-
-  themeToggleDesktop?.addEventListener('keydown', (e) => {
-    if (e.key === 'Enter' || e.key === ' ') {
-      e.preventDefault();
-      toggleTheme();
-    }
-  });
-
-  // Initialize theme when DOM is ready
-  document.addEventListener('DOMContentLoaded', initTheme);
-
 </script>

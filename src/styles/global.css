@@ -2,25 +2,6 @@
 @import "@fontsource-variable/funnel-display";
 
 :root {
-  /* Light theme variables */
-  --bg-primary: #FFFFFF;
-  --bg-secondary: #F8F9FA;
-  --text-primary: #060606;
-  --text-secondary: #6C757D;
-  --accent: #b074ff;
-  --border: #E9ECEF;
-  --shadow: rgba(0, 0, 0, 0.1);
-
-  /* Dark theme variables */
-  --bg-primary-dark: #060606;
-  --bg-secondary-dark: #1A1A1A;
-  --text-primary-dark: #FFFFFF;
-  --text-secondary-dark: #B9B9B9;
-  --accent-dark: #74b5ff;
-  --border-dark: #2E2E2E;
-  --shadow-dark: rgba(255, 255, 255, 0.1);
-
-  /* Legacy */
   --white: #FFFAFA;
   --whitebg: #B9B9B9;
   --black: #060606;
@@ -28,28 +9,6 @@
   --primary: #FF74D9;
 
   scroll-behavior: smooth;
-}
-
-/* Light theme (default) */
-[data-theme="light"] {
-  --bg-primary: var(--bg-primary);
-  --bg-secondary: var(--bg-secondary);
-  --text-primary: var(--text-primary);
-  --text-secondary: var(--text-secondary);
-  --accent: var(--accent);
-  --border: var(--border);
-  --shadow: var(--shadow);
-}
-
-/* Dark theme */
-[data-theme="dark"] {
-  --bg-primary: var(--bg-primary-dark);
-  --bg-secondary: var(--bg-secondary-dark);
-  --text-primary: var(--text-primary-dark);
-  --text-secondary: var(--text-secondary-dark);
-  --accent: var(--accent-dark);
-  --border: var(--border-dark);
-  --shadow: var(--shadow-dark);
 }
 
 *::selection {
@@ -63,10 +22,6 @@ h1, h2, h3 {
 
 p, a, li, span {
   font-family: 'Satoshi', sans-serif;
-}
-
-#horaColombia {
-  font-family: monospace;
 }
 
 /* Satoshi */

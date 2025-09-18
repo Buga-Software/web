@@ -8,12 +8,12 @@ const formAction = import.meta.env.VITE_FORMSPREE_URL;
 >
     <div class="text-center space-y-3 max-w-2xl">
         <h2
-            class="text-3xl md:text-4xl font-bold leading-tight text-[var(--text-primary)] pl-4"
+            class="text-3xl md:text-4xl font-bold leading-tight text-white pl-4"
         >
             No dudes en contactarnos
         </h2>
         <p
-            class="text-[var(--text-secondary)] opacity-90 hidden md:block"
+            class="text-gray-200 opacity-90 hidden md:block"
         >
             Cada proyecto exitoso inicia con una conversación
         </p>
@@ -27,7 +27,7 @@ const formAction = import.meta.env.VITE_FORMSPREE_URL;
             class="flex flex-col gap-5 p-4 md:p-6"
         >
             <div class="flex flex-col">
-                <label class="mb-1 text-sm font-medium text-[var(--text-primary)]"
+                <label class="mb-1 text-sm font-medium text-gray-300"
                     >Nombre o Razón Social</label
                 >
                 <input
@@ -35,12 +35,12 @@ const formAction = import.meta.env.VITE_FORMSPREE_URL;
                     name="from_name"
                     placeholder="Juan Pérez"
                     required
-                    class="px-4 py-3 bg-black/30 text-[var(--text-secondary)] border border-white/20 rounded-xl focus:outline-none focus:ring-2 focus:ring-[var(--accent)] placeholder-white/30"
+                    class="px-4 py-3 bg-black/30 text-white border border-white/20 rounded-xl focus:outline-none focus:ring-2 focus:ring-white placeholder-white/30"
                 />
             </div>
 
             <div class="flex flex-col">
-                <label class="mb-1 text-sm font-medium text-[var(--text-primary)]"
+                <label class="mb-1 text-sm font-medium text-gray-300"
                     >Correo</label
                 >
                 <input
@@ -48,12 +48,12 @@ const formAction = import.meta.env.VITE_FORMSPREE_URL;
                     name="reply_to"
                     placeholder="ejemplo@gmail.com"
                     required
-                    class="px-4 py-3 bg-black/30 text-[var(--text-secondary)] border border-white/20 rounded-xl focus:outline-none focus:ring-2 focus:ring-[var(--accent)] placeholder-white/30"
+                    class="px-4 py-3 bg-black/30 text-white border border-white/20 rounded-xl focus:outline-none focus:ring-2 focus:ring-white placeholder-white/30"
                 />
             </div>
 
             <div class="flex flex-col">
-                <label class="mb-1 text-sm font-medium text-[var(--text-primary)]"
+                <label class="mb-1 text-sm font-medium text-gray-300"
                     >Tu propuesta o pregunta</label
                 >
                 <textarea
@@ -61,13 +61,13 @@ const formAction = import.meta.env.VITE_FORMSPREE_URL;
                     placeholder="Cuéntanos sobre tu idea"
                     rows="5"
                     required
-                    class="px-4 py-3 bg-black/30 text-[var(--text-secondary)] border border-white/20 rounded-xl focus:outline-none focus:ring-2 focus:ring-[var(--accent)] placeholder-white/30 resize-none"
+                    class="px-4 py-3 bg-black/30 text-white border border-white/20 rounded-xl focus:outline-none focus:ring-2 focus:ring-white placeholder-white/30 resize-none"
                 ></textarea>
             </div>
 
             <button
                 type="submit"
-                class="px-6 py-3 bg-[var(--text-primary)] text-[var(--bg-primary)] font-semibold rounded-xl shadow-md transition-opacity hover:opacity-80 cursor-pointer focus:outline-none focus:ring-2 focus:ring-[var(--accent)]"
+                class="px-6 py-3 bg-white/90 text-black border font-semibold rounded-xl shadow-md transition-all hover:bg-white/80 hover:shadow-lg cursor-pointer focus:outline-none focus:ring-2 focus:ring-white"
             >
                 Enviar mensaje
             </button>
@@ -75,7 +75,7 @@ const formAction = import.meta.env.VITE_FORMSPREE_URL;
 
         <div
             id="form-message"
-            class="hidden w-full justify-center items-center mt-4 text-[var(--text-primary)] text-lg"
+            class="hidden w-full justify-center items-center mt-4 text-[var(--white)] text-lg"
         >
             ✅ ¡Gracias por tu mensaje!
         </div>
