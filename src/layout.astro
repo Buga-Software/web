@@ -1,0 +1,46 @@
+---
+interface Props {
+  title: string;
+  silk?: boolean;
+}
+
+const { title = true } = Astro.props;
+
+import "./styles/global.css";
+import Squares from "./components/Squares.tsx";
+---
+
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="generator" content={Astro.generator} />
+    <meta name="description" content="Creamos soluciones digitales personalizadas que optimizan procesos y potencian el crecimiento de negocios en la ciudad de Buga" />
+    
+    <title>{title}</title>
+  </head>
+
+  <body id="inicio" class="bg-[var(--black)]">
+      <div class="absolute w-full h-full top-0 left-0 z-[-1]">
+        <Squares 
+          client:load
+          speed={0.5} 
+          squareSize={50}
+          direction='up'
+          borderColor='#2e2e2e'
+          hoverFillColor='#222'
+        />
+      </div>
+    <slot />
+  </body>
+</html>
+
+<script>
+  // Smooth scrolling
+  import Lenis from "lenis";
+
+  const lenis = new Lenis({
+    autoRaf: true,
+  });
+</script>

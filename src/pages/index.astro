@@ -1,42 +1,24 @@
 ---
-import "../styles/global.css";
-import Aurora from "../Aurora/Aurora.tsx";
+import Layout from '../layout.astro';
+import Nav from '../components/nav.astro';
+import Hero from '../components/hero.astro';
+import ServicesSection from '../components/servicesSection.astro';
+import ServiceInfo from "../components/servicesInfo.tsx";
+import Clients from '../components/clients.astro';
+import Contact from "../components/contact.astro";
+import Footer from '../components/footer.astro';
 ---
 
-<html lang="es">
-  <head>
-    <meta charset="utf-8" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <meta name="viewport" content="width=device-width" />
-    <meta name="generator" content={Astro.generator} />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Questrial&family=Red+Hat+Display:ital,wght@0,300..900;1,300..900&display=swap"
-      rel="stylesheet"
-    />
-    <title>Buga Software</title>
-  </head>
-  <body class="bg-gray-950">
-    <div
-      class="absolute inset-0 z-10 pointer-events-none opacity-60 mix-blend-soft-light animate-grain"
-      style={{
-        backgroundImage: "url('/grain.svg')",
-        backgroundSize: "cover",
-      }}
-  />
-    <Aurora
-      client:load
-      colorStops={["#5E00EB", "#758ce0", "#0cb8f7"]}
-      blend={1}
-      amplitude={0.3}
-      speed={1}
-    />
-    <div
-      class="absolute top-0 left-0 w-full h-full flex flex-col items-center justify-center"
-    >
-      <img src="/bugasoftware.svg" alt="Buga Software Logo" class="size-52" />
-      <p class="text-white text-xl">Proximamente</p>
-    </div>
-  </body>
-</html>
+<Layout title="Buga Software">
+  <Nav/>
+  <div class="space-y-5">
+    <main class="flex flex-col text-[var(--whitebg)] px-4 md:px-0">
+      <Hero />
+      <ServicesSection />
+      <ServiceInfo client:load />
+      <Clients />
+      <Contact />
+    </main>
+    <div>
+    <Footer />
+</Layout>

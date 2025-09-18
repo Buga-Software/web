@@ -1,0 +1,163 @@
+---
+const items = [
+  { label: 'Servicios', href: '#servicios' },
+  { label: 'Clientes', href: '#clientes' },
+  { label: 'Contacto', href: '#contacto' },
+];
+---
+
+<nav id="navbar" class="sticky top-0 z-50 w-full transition-all duration-300 ease-in-out">
+  <div class="max-w-7xl mx-auto flex justify-between items-center px-12 py-6">
+    <a href="#inicio" class="flex flex-row items-center space-x-6 text-white text-sm flex-shrink-0">
+      <img class="aspect-square w-7" src="icon.svg" alt="Icono de Buga Software">
+    </a>
+
+    <!-- Burger Menu -->
+    <button id="burger-btn" class="md:hidden text-white p-3 hover:cursor-pointer">
+      <svg class="size-7" viewBox="0 0 16 16" fill="currentColor">
+        <rect class="transition-transform duration-300 ease-in-out origin-center" x="1" y="5" width="14" height="1" rx="0.5"></rect>
+        <rect class="transition-transform duration-300 ease-in-out origin-center" x="1" y="10" width="14" height="1" rx="0.5"></rect>
+      </svg>
+    </button>
+
+    <!-- Desktop Menu -->
+    <div class="hidden md:flex space-x-4 text-white">
+      {items.map(({ label, href }) => (
+        <a
+          href={href}
+          class="inline-block rounded-lg px-5 py-1 relative"
+        >
+          {label}
+        </a>
+      ))}
+    </div>
+  </div>
+</nav>
+
+<!-- Mobile Menu -->
+<div class="relative mobile-nav hidden md:hidden">
+  <div class="fixed top-0 left-0 w-full h-screen bg-black/90 backdrop-blur-md z-40 text-white/60 flex flex-col justify-between items-center p-10">
+    <ul class="flex flex-col space-y-5 text-2xl text-center font-medium mt-20">
+      {items.map(({ label, href }) => (
+        <li>
+          <a href={href}>{label}</a>
+        </li>
+      ))}
+    </ul>
+  </div>
+</div>
+
+<style>
+  /* Navbar states */
+  #navbar {
+    background: rgba(0, 0, 0, 0);
+    backdrop-filter: blur(0px);
+  }
+  
+  #navbar.scrolled {
+    background: rgba(18, 18, 18, 0.186);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+  }
+
+  /* Active link indicator (desktop only) */
+  @media (min-width: 768px) {
+    .active-link {
+      position: relative;
+      color: white !important;
+    }
+    .active-link::before {
+      content: '';
+      position: absolute;
+      left: 8px;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 4px;
+      height: 50%;
+      background: white;
+      transition: all 0.25s ease;
+    }
+  }
+
+  /* Active link mobile: simple underline */
+  @media (max-width: 767px) {
+    .active-link {
+      position: relative;
+      color: white !important;
+    }
+    .active-link::after {
+      content: '';
+      position: absolute;
+      left: 50%;
+      bottom: -6px;
+      transform: translateX(-50%);
+      width: 40%;
+      height: 2px;
+      background: white;
+      border-radius: 2px;
+    }
+  }
+</style>
+
+<script lang="ts">
+  const button = document.getElementById('burger-btn');
+  const nav = document.querySelector('.mobile-nav');
+  const body = document.body;
+  const lines = button?.querySelectorAll('rect');
+  const navbar = document.getElementById('navbar');
+
+  button?.addEventListener('click', () => {
+    nav?.classList.toggle('hidden');
+    body.classList.toggle('overflow-hidden');
+    lines?.forEach((line, i) =>
+      line.classList.toggle(i === 0 ? 'rotate-45 translate-y-[1.8px]' : '-rotate-45 -translate-y-[1.8px]')
+    );
+  });
+
+  window.addEventListener('scroll', () => {
+    navbar?.classList.toggle('scrolled', window.scrollY > 50);
+  });
+
+  const closeMenu = () => {
+    nav?.classList.add('hidden');
+    body.classList.remove('overflow-hidden');
+    lines?.forEach(line => line.classList.remove('rotate-45', 'translate-y-[1.8px]', '-rotate-45', '-translate-y-[1.8px]'));
+  };
+
+  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function (e) {
+      e.preventDefault();
+      const anchorElem = this;
+      const targetId = anchorElem.getAttribute('href')?.substring(1);
+      const targetElement = document.getElementById(targetId);
+      if (targetElement) {
+        targetElement.scrollIntoView({ behavior: 'smooth' });
+      }
+      if (nav && !nav.classList.contains('hidden')) closeMenu();
+    });
+  });
+
+  document.addEventListener("DOMContentLoaded", () => {
+    const sections = document.querySelectorAll("section[id]");
+    const navLinks = document.querySelectorAll("nav a[href^='#']");
+    const observerOptions = { threshold: 0.6 };
+
+    const observerCallback = (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          const id = entry.target.getAttribute("id");
+
+          navLinks.forEach((link) => link.classList.remove("active-link"));
+
+          if (id && id !== "hero") {
+            const activeLink = document.querySelector(`nav a[href="#${id}"]`);
+            activeLink?.classList.add("active-link");
+          }
+        }
+      });
+    };
+
+    const observer = new IntersectionObserver(observerCallback, observerOptions);
+    sections.forEach((section) => observer.observe(section));
+  });
+</script>
