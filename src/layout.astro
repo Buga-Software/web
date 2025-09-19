@@ -8,6 +8,7 @@ const { title = true } = Astro.props;
 
 import "./styles/global.css";
 import Squares from "./components/Squares.tsx";
+import Analytics from '@vercel/analytics/astro';
 ---
 
 <html lang="es">
@@ -22,6 +23,7 @@ import Squares from "./components/Squares.tsx";
   </head>
 
   <body id="inicio" class="bg-[var(--black)]">
+    <Analytics />
       <div class="absolute w-full h-full top-0 left-0 z-[-1]">
         <Squares 
           client:load
